@@ -35,102 +35,42 @@ export default function FAQSection() {
   const [open, setOpen] = useState(null)
 
   return (
-    <section
-      id="faq"
-      style={{
-        background: 'var(--bg-2)',
-        padding: '120px 12px',
-        borderTop: '1px solid var(--border)',
-      }}
-    >
-      <div style={{ maxWidth: '760px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '64px', textAlign: 'center' }}>
-          <span style={{
-            display: 'inline-block',
-            color: 'var(--accent)',
-            fontSize: '13px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 500,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>
+    <section id="faq" className="bg-surface-alt py-30 px-3 border-t border-line">
+      <div className="max-w-[760px] mx-auto">
+        <div className="mb-16 text-center">
+          <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             FAQ
           </span>
-          <h2 style={{
-            color: 'var(--contrast-1)',
-            fontSize: 'clamp(28px, 3vw, 40px)',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 400,
-            lineHeight: 1.1,
-            letterSpacing: '-0.03em',
-          }}>
+          <h2 className="text-content text-faq-title font-normal">
             Questions worth asking.
           </h2>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+        <div className="flex flex-col gap-0.5">
           {faqs.map((faq, i) => (
             <div
               key={i}
-              style={{
-                background: 'var(--bg-1)',
-                borderRadius: '12px',
-                overflow: 'hidden',
-                border: '1px solid var(--border)',
-              }}
+              className="bg-surface rounded-xl overflow-hidden border border-line"
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                style={{
-                  width: '100%',
-                  padding: '22px 24px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '16px',
-                  background: 'transparent',
-                  border: 'none',
-                  cursor: 'pointer',
-                  textAlign: 'left',
-                }}
+                className="w-full py-[22px] px-6 flex items-center justify-between gap-4 bg-transparent border-none cursor-pointer text-left"
               >
-                <span style={{
-                  color: 'var(--contrast-1)',
-                  fontSize: '16px',
-                  fontFamily: "'Host Grotesk', sans-serif",
-                  fontWeight: 500,
-                  lineHeight: 1.35,
-                  letterSpacing: '-0.02em',
-                }}>
+                <span className="text-content text-base font-medium leading-[1.35] tracking-tight">
                   {faq.q}
                 </span>
-                <span style={{
-                  color: open === i ? 'var(--accent)' : 'var(--contrast-muted)',
-                  fontSize: '20px',
-                  lineHeight: 1,
-                  flexShrink: 0,
-                  transition: 'transform 0.2s, color 0.2s',
-                  transform: open === i ? 'rotate(45deg)' : 'rotate(0deg)',
-                  display: 'inline-block',
-                }}>
+                <span
+                  className={`text-xl leading-none shrink-0 inline-block transition-[transform,color] duration-200 ${
+                    open === i ? 'text-accent rotate-45' : 'text-content-muted rotate-0'
+                  }`}
+                >
                   +
                 </span>
               </button>
 
               {open === i && (
-                <div style={{
-                  padding: '0 24px 22px',
-                  borderTop: '1px solid var(--border)',
-                  paddingTop: '20px',
-                }}>
-                  <p style={{
-                    color: 'var(--contrast-muted)',
-                    fontSize: '15px',
-                    fontFamily: "'Host Grotesk', sans-serif",
-                    lineHeight: 1.65,
-                    letterSpacing: '-0.01em',
-                  }}>
+                <div className="px-6 pb-[22px] border-t border-line pt-5">
+                  <p className="text-content-muted text-[15px] leading-[1.65] tracking-snug">
                     {faq.a}
                   </p>
                 </div>

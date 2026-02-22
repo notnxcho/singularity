@@ -6,109 +6,37 @@ const ArrowIcon = () => (
 
 export default function FinalCTASection() {
   return (
-    <section
-      style={{
-        background: 'var(--bg-1)',
-        padding: '120px 12px',
-        borderTop: '1px solid var(--border)',
-      }}
-    >
-      <div style={{
-        maxWidth: '1080px',
-        margin: '0 auto',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        gap: '28px',
-      }}>
-        {/* Ornament */}
-        <div style={{
-          width: '1px',
-          height: '60px',
-          background: 'linear-gradient(180deg, transparent, var(--accent-border), transparent)',
-        }}/>
+    <section className="bg-surface py-30 px-3 border-t border-line">
+      <div className="max-w-container mx-auto flex flex-col items-center text-center gap-7">
+        <div className="w-px h-[60px] bg-gradient-to-b from-transparent via-accent-border to-transparent" />
 
-        <h2 style={{
-          color: 'var(--contrast-1)',
-          fontSize: 'clamp(36px, 5vw, 64px)',
-          fontFamily: "'Host Grotesk', sans-serif",
-          fontWeight: 400,
-          lineHeight: 1.05,
-          letterSpacing: '-0.04em',
-          maxWidth: '700px',
-        }}>
+        <h2 className="text-content text-cta font-normal max-w-[700px]">
           Stop guessing.{' '}
-          <em style={{ fontStyle: 'italic', color: 'var(--accent)', fontWeight: 600 }}>
+          <em className="italic text-accent font-semibold">
             Start measuring.
           </em>
         </h2>
 
-        <p style={{
-          color: 'var(--contrast-muted)',
-          fontSize: '18px',
-          fontFamily: "'Host Grotesk', sans-serif",
-          lineHeight: 1.5,
-          letterSpacing: '-0.02em',
-          maxWidth: '480px',
-        }}>
+        <p className="text-content-muted text-lg leading-normal tracking-tight max-w-[480px]">
           Your strategy is only as good as your discipline. Singularity gives you the data to prove it — and the insight to improve it.
         </p>
 
-        {/* CTA Button */}
-        <div style={{
-          display: 'flex',
-          overflow: 'hidden',
-          borderRadius: '14px',
-          background: 'var(--accent)',
-          boxShadow: '0 8px 32px rgba(255, 141, 59, 0.3)',
-          cursor: 'pointer',
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '14px 24px',
-            borderRadius: '14px',
-            background: 'var(--contrast-1)',
-          }}>
-            <span style={{
-              color: 'var(--bg-1)',
-              fontSize: '17px',
-              fontFamily: "'Host Grotesk', sans-serif",
-              fontWeight: 600,
-              letterSpacing: '-0.02em',
-              whiteSpace: 'nowrap',
-            }}>
+        <div className="flex overflow-hidden rounded-[14px] bg-accent shadow-[0_8px_32px_rgba(255,141,59,0.3)] cursor-pointer">
+          <div className="flex items-center justify-center py-3.5 px-6 rounded-[14px] bg-content">
+            <span className="text-surface text-[17px] font-semibold tracking-tight whitespace-nowrap">
               Create Free Account
             </span>
           </div>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            width: '52px',
-            color: '#fff',
-          }}>
+          <div className="flex items-center justify-center w-[52px] text-white">
             <ArrowIcon />
           </div>
         </div>
 
-        <p style={{
-          color: 'var(--contrast-muted)',
-          fontSize: '13px',
-          fontFamily: "'Host Grotesk', sans-serif",
-          letterSpacing: '-0.01em',
-        }}>
+        <p className="text-content-muted text-[13px] tracking-snug">
           No credit card required. Import your first trades in under 2 minutes.
         </p>
 
-        {/* Bottom ornament */}
-        <div style={{
-          width: '1px',
-          height: '60px',
-          background: 'linear-gradient(180deg, transparent, var(--accent-border), transparent)',
-        }}/>
+        <div className="w-px h-[60px] bg-gradient-to-b from-transparent via-accent-border to-transparent" />
       </div>
     </section>
   )

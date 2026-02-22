@@ -8,139 +8,48 @@ const ArrowDownRight = () => (
 
 export default function Navbar() {
   return (
-    <nav style={{
-      position: 'fixed',
-      top: '12px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      zIndex: 50,
-    }}>
-      <div style={{
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '64px',
-        height: '77px',
-        padding: '0 16px',
-        borderBottomLeftRadius: '24px',
-        borderBottomRightRadius: '24px',
-        background: 'var(--bg-1)',
-        boxShadow: 'var(--shadow-nav)',
-      }}>
-        {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', paddingLeft: '8px' }}>
-          <span style={{
-            color: 'var(--contrast-1)',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontSize: '20px',
-            fontWeight: 800,
-            letterSpacing: '-0.4px',
-            lineHeight: 1,
-          }}>
+    <nav className="fixed top-3 left-1/2 -translate-x-1/2 z-50">
+      <div className="relative flex items-center gap-16 h-[77px] px-4 rounded-b-3xl bg-surface shadow-nav">
+        <div className="flex items-center pl-2">
+          <span className="text-content text-xl font-extrabold tracking-[-0.4px] leading-none">
             SINGULARITY
           </span>
         </div>
 
-        {/* Nav links */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div className="flex items-center gap-4">
           {['Platform', 'Features', 'Pricing'].map(link => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              style={{
-                color: 'var(--contrast-2)',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontSize: '16px',
-                fontWeight: 400,
-                letterSpacing: '-0.32px',
-                lineHeight: 'normal',
-                textDecoration: 'none',
-                opacity: 1,
-                transition: 'opacity 0.15s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.opacity = '0.6' }}
-              onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
+              className="text-content-secondary text-base tracking-[-0.32px] no-underline hover:opacity-60 transition-opacity duration-150"
             >
               {link}
             </a>
           ))}
         </div>
 
-        {/* CTA area */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div className="flex items-center gap-4">
           <a
             href="#signin"
-            style={{
-              color: 'var(--contrast-2)',
-              fontFamily: "'Host Grotesk', sans-serif",
-              fontSize: '16px',
-              fontWeight: 400,
-              letterSpacing: '-0.32px',
-              lineHeight: 'normal',
-              textDecoration: 'none',
-              opacity: 1,
-              transition: 'opacity 0.15s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.opacity = '0.6' }}
-            onMouseLeave={e => { e.currentTarget.style.opacity = '1' }}
+            className="text-content-secondary text-base tracking-[-0.32px] no-underline hover:opacity-60 transition-opacity duration-150"
           >
             Sign in
           </a>
 
-          {/* Try for free — two-part pill button */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'stretch',
-            overflow: 'hidden',
-            borderRadius: '12px',
-            background: 'var(--accent)',
-            cursor: 'pointer',
-          }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '12px 16px',
-              borderRadius: '12px',
-              background: 'var(--contrast-1)',
-            }}>
-              <span style={{
-                color: 'var(--bg-1)',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontSize: '16px',
-                fontWeight: 500,
-                letterSpacing: '-0.32px',
-                lineHeight: 'normal',
-                whiteSpace: 'nowrap',
-              }}>
+          <div className="flex items-stretch overflow-hidden rounded-xl bg-accent cursor-pointer">
+            <div className="flex items-center justify-center px-4 py-3 rounded-xl bg-content">
+              <span className="text-surface text-base font-medium tracking-[-0.32px] whitespace-nowrap">
                 Try for free
               </span>
             </div>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '40px',
-              color: 'var(--bg-1)',
-            }}>
+            <div className="flex items-center justify-center w-10 text-surface">
               <ArrowDownRight />
             </div>
           </div>
         </div>
 
-        {/*
-          Corner connectors — blend the frame-top border into the navbar edges.
-          Left connector: squared corner faces top-right (toward the navbar edge + frame-top).
-          Right connector: squared corner faces top-left (toward the navbar edge + frame-top).
-        */}
-        <CornerConnector
-          corner="tr"
-          style={{ position: 'absolute', top: 0, left: '-24px', pointerEvents: 'none' }}
-        />
-        <CornerConnector
-          corner="tl"
-          style={{ position: 'absolute', top: 0, right: '-24px', pointerEvents: 'none' }}
-        />
+        <CornerConnector corner="tr" className="absolute top-0 -left-6 pointer-events-none" />
+        <CornerConnector corner="tl" className="absolute top-0 -right-6 pointer-events-none" />
       </div>
     </nav>
   )

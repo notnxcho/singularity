@@ -68,236 +68,111 @@ const CheckIcon = () => (
 
 export default function PricingSection() {
   return (
-    <section
-      id="pricing"
-      style={{
-        background: 'var(--bg-1)',
-        padding: '120px 12px',
-        borderTop: '1px solid var(--border)',
-      }}
-    >
-      <div style={{ maxWidth: '1080px', margin: '0 auto' }}>
-        {/* Header */}
-        <div style={{ marginBottom: '64px', textAlign: 'center' }}>
-          <span style={{
-            display: 'inline-block',
-            color: 'var(--accent)',
-            fontSize: '13px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 500,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>
+    <section id="pricing" className="bg-surface py-30 px-3 border-t border-line">
+      <div className="max-w-container mx-auto">
+        <div className="mb-16 text-center">
+          <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             Pricing
           </span>
-          <h2 style={{
-            color: 'var(--contrast-1)',
-            fontSize: 'clamp(32px, 3.5vw, 48px)',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 400,
-            lineHeight: 1.1,
-            letterSpacing: '-0.03em',
-            marginBottom: '14px',
-          }}>
+          <h2 className="text-content text-section font-normal mb-3.5">
             Start free. Upgrade when you're ready.
           </h2>
-          <p style={{
-            color: 'var(--contrast-muted)',
-            fontSize: '16px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            lineHeight: 1.5,
-            letterSpacing: '-0.01em',
-          }}>
+          <p className="text-content-muted text-base leading-normal tracking-snug">
             Free is actually usable. Pro covers most traders. Elite is for professionals managing multiple accounts.
           </p>
         </div>
 
-        {/* Plans */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '16px',
-          alignItems: 'stretch',
-        }}>
+        <div className="grid grid-cols-3 gap-4 items-stretch">
           {plans.map(plan => (
             <div
               key={plan.name}
-              style={{
-                background: plan.highlight ? '#110000' : 'var(--bg-2)',
-                border: plan.highlight ? 'none' : '1px solid var(--border)',
-                borderRadius: '20px',
-                padding: '36px 28px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '0',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
+              className={`rounded-2.5xl py-9 px-7 flex flex-col relative overflow-hidden ${
+                plan.highlight
+                  ? 'bg-[#110000]'
+                  : 'bg-surface-alt border border-line'
+              }`}
             >
-              {/* Highlight accent bar */}
               {plan.highlight && (
-                <div style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '3px',
-                  background: 'var(--accent)',
-                }}/>
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-accent" />
               )}
 
-              {/* Badge */}
               {plan.badge && (
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  background: 'var(--accent)',
-                  borderRadius: '6px',
-                  padding: '4px 10px',
-                  marginBottom: '20px',
-                  width: 'fit-content',
-                }}>
-                  <span style={{
-                    color: '#fff',
-                    fontSize: '11px',
-                    fontFamily: "'Host Grotesk', sans-serif",
-                    fontWeight: 700,
-                    letterSpacing: '0.05em',
-                    textTransform: 'uppercase',
-                  }}>
+                <div className="inline-flex items-center bg-accent rounded-md py-1 px-2.5 mb-5 w-fit">
+                  <span className="text-white text-[11px] font-bold tracking-wider uppercase">
                     {plan.badge}
                   </span>
                 </div>
               )}
 
-              {/* Plan name */}
-              <div style={{
-                color: plan.highlight ? '#fffcf5' : 'var(--contrast-1)',
-                fontSize: '18px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontWeight: 700,
-                letterSpacing: '-0.01em',
-                marginBottom: '8px',
-                marginTop: plan.badge ? 0 : '20px',
-              }}>
+              <div
+                className={`text-lg font-bold tracking-snug mb-2 ${plan.badge ? '' : 'mt-5'} ${
+                  plan.highlight ? 'text-[#fffcf5]' : 'text-content'
+                }`}
+              >
                 {plan.name}
               </div>
 
-              {/* Price */}
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px', marginBottom: '6px' }}>
-                <span style={{
-                  color: plan.highlight ? '#fffcf5' : 'var(--contrast-1)',
-                  fontSize: '48px',
-                  fontFamily: "'Host Grotesk', sans-serif",
-                  fontWeight: 800,
-                  letterSpacing: '-0.05em',
-                  lineHeight: 1,
-                }}>
+              <div className="flex items-baseline gap-1 mb-1.5">
+                <span
+                  className={`text-5xl font-extrabold tracking-[-0.05em] leading-none ${
+                    plan.highlight ? 'text-[#fffcf5]' : 'text-content'
+                  }`}
+                >
                   {plan.price}
                 </span>
-                <span style={{
-                  color: plan.highlight ? 'rgba(255,252,245,0.5)' : 'var(--contrast-muted)',
-                  fontSize: '14px',
-                  fontFamily: "'Host Grotesk', sans-serif",
-                }}>
+                <span
+                  className={`text-sm ${
+                    plan.highlight ? 'text-[rgba(255,252,245,0.5)]' : 'text-content-muted'
+                  }`}
+                >
                   /{plan.period}
                 </span>
               </div>
 
-              <p style={{
-                color: plan.highlight ? 'rgba(255,252,245,0.6)' : 'var(--contrast-muted)',
-                fontSize: '14px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                lineHeight: 1.4,
-                letterSpacing: '-0.01em',
-                marginBottom: '28px',
-              }}>
+              <p
+                className={`text-sm leading-[1.4] tracking-snug mb-7 ${
+                  plan.highlight ? 'text-[rgba(255,252,245,0.6)]' : 'text-content-muted'
+                }`}
+              >
                 {plan.tagline}
               </p>
 
-              {/* Features */}
-              <ul style={{
-                listStyle: 'none',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '10px',
-                flex: 1,
-                marginBottom: '32px',
-              }}>
+              <ul className="list-none flex flex-col gap-2.5 flex-1 mb-8">
                 {plan.features.map(f => (
-                  <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px' }}>
-                    <span style={{ flexShrink: 0, marginTop: '1px' }}>
+                  <li key={f} className="flex items-start gap-2">
+                    <span className="shrink-0 mt-px">
                       <CheckIcon />
                     </span>
-                    <span style={{
-                      color: plan.highlight ? 'rgba(255,252,245,0.85)' : 'var(--contrast-2)',
-                      fontSize: '14px',
-                      fontFamily: "'Host Grotesk', sans-serif",
-                      lineHeight: 1.4,
-                      letterSpacing: '-0.01em',
-                    }}>
+                    <span
+                      className={`text-sm leading-[1.4] tracking-snug ${
+                        plan.highlight ? 'text-[rgba(255,252,245,0.85)]' : 'text-content-secondary'
+                      }`}
+                    >
                       {f}
                     </span>
                   </li>
                 ))}
               </ul>
 
-              {/* CTA */}
               {plan.ctaStyle === 'primary' ? (
-                <div style={{
-                  display: 'flex',
-                  overflow: 'hidden',
-                  borderRadius: '12px',
-                  background: 'var(--accent)',
-                  cursor: 'pointer',
-                }}>
-                  <div style={{
-                    flex: 1,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    padding: '12px 16px',
-                    borderRadius: '12px',
-                    background: '#fffcf5',
-                  }}>
-                    <span style={{
-                      color: '#110000',
-                      fontSize: '15px',
-                      fontFamily: "'Host Grotesk', sans-serif",
-                      fontWeight: 600,
-                      letterSpacing: '-0.02em',
-                    }}>
+                <div className="flex overflow-hidden rounded-xl bg-accent cursor-pointer">
+                  <div className="flex-1 flex items-center justify-center px-4 py-3 rounded-xl bg-[#fffcf5]">
+                    <span className="text-[#110000] text-[15px] font-semibold tracking-tight">
                       {plan.cta}
                     </span>
                   </div>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '44px',
-                    color: '#fff',
-                  }}>
+                  <div className="flex items-center justify-center w-11 text-white">
                     <ArrowIcon />
                   </div>
                 </div>
               ) : (
-                <button style={{
-                  width: '100%',
-                  padding: '12px 16px',
-                  borderRadius: '12px',
-                  border: plan.highlight
-                    ? '1px solid rgba(255,252,245,0.2)'
-                    : '1px solid var(--border-strong)',
-                  background: 'transparent',
-                  color: plan.highlight ? '#fffcf5' : 'var(--contrast-1)',
-                  fontSize: '15px',
-                  fontFamily: "'Host Grotesk', sans-serif",
-                  fontWeight: 600,
-                  letterSpacing: '-0.02em',
-                  cursor: 'pointer',
-                  transition: 'border-color 0.15s, background 0.15s',
-                }}>
+                <button
+                  className={`w-full py-3 px-4 rounded-xl bg-transparent text-[15px] font-semibold tracking-tight cursor-pointer transition-[border-color,background] duration-150 ${
+                    plan.highlight
+                      ? 'border border-[rgba(255,252,245,0.2)] text-[#fffcf5]'
+                      : 'border border-line-strong text-content'
+                  }`}
+                >
                   {plan.cta}
                 </button>
               )}

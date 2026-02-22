@@ -23,32 +23,7 @@ export default function DarkModeToggle({ darkMode, toggle }) {
     <button
       onClick={toggle}
       title={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-      style={{
-        position: 'fixed',
-        bottom: '28px',
-        right: '28px',
-        zIndex: 60,
-        width: '48px',
-        height: '48px',
-        borderRadius: '14px',
-        border: '1px solid var(--border-strong)',
-        background: 'var(--bg-1)',
-        color: 'var(--contrast-1)',
-        cursor: 'pointer',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        boxShadow: 'var(--shadow-nav)',
-        transition: 'transform 0.15s, box-shadow 0.15s',
-      }}
-      onMouseEnter={e => {
-        e.currentTarget.style.transform = 'scale(1.08)'
-        e.currentTarget.style.borderColor = 'var(--accent-border)'
-      }}
-      onMouseLeave={e => {
-        e.currentTarget.style.transform = 'scale(1)'
-        e.currentTarget.style.borderColor = 'var(--border-strong)'
-      }}
+      className="fixed bottom-7 right-7 z-[60] w-12 h-12 rounded-[14px] border border-line-strong bg-surface text-content cursor-pointer flex items-center justify-center shadow-nav transition-[transform,border-color] duration-150 hover:scale-[1.08] hover:border-accent-border"
     >
       {darkMode ? <SunIcon /> : <MoonIcon />}
     </button>

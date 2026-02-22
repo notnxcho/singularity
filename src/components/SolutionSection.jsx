@@ -45,112 +45,42 @@ const pillars = [
 
 export default function SolutionSection() {
   return (
-    <section
-      id="platform"
-      style={{
-        background: 'var(--bg-1)',
-        padding: '120px 12px',
-        borderTop: '1px solid var(--border)',
-        borderBottom: '1px solid var(--border)',
-      }}
-    >
-      <div style={{ maxWidth: '1080px', margin: '0 auto' }}>
-        {/* Header */}
-        <div style={{ marginBottom: '72px', maxWidth: '600px' }}>
-          <span style={{
-            display: 'inline-block',
-            color: 'var(--accent)',
-            fontSize: '13px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 500,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>
+    <section id="platform" className="bg-surface py-30 px-3 border-t border-b border-line">
+      <div className="max-w-container mx-auto">
+        <div className="mb-18 max-w-[600px]">
+          <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             The Solution
           </span>
-          <h2 style={{
-            color: 'var(--contrast-1)',
-            fontSize: 'clamp(32px, 3.5vw, 48px)',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 400,
-            lineHeight: 1.1,
-            letterSpacing: '-0.03em',
-            marginBottom: '16px',
-          }}>
+          <h2 className="text-content text-section font-normal mb-4">
             Strategy-first journaling for traders who{' '}
-            <em style={{ fontStyle: 'italic', color: 'var(--accent)' }}>take this seriously.</em>
+            <em className="italic text-accent">take this seriously.</em>
           </h2>
-          <p style={{
-            color: 'var(--contrast-muted)',
-            fontSize: '16px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            lineHeight: 1.6,
-            letterSpacing: '-0.01em',
-          }}>
+          <p className="text-content-muted text-base leading-relaxed tracking-snug">
             Singularity is not another trade log. It's a strategy accountability system with institutional-grade analytics designed for traders who execute at volume.
           </p>
         </div>
 
-        {/* Pillars */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+        <div className="flex flex-col gap-0.5">
           {pillars.map((pillar, i) => (
             <div
               key={i}
-              style={{
-                display: 'grid',
-                gridTemplateColumns: i % 2 === 0 ? '1fr 1fr' : '1fr 1fr',
-                gap: '80px',
-                padding: '56px 0',
-                borderTop: '1px solid var(--border)',
-                alignItems: 'start',
-              }}
+              className="grid grid-cols-2 gap-20 py-14 border-t border-line items-start"
             >
               <div style={{ order: i % 2 !== 0 ? 1 : 0 }}>
-                <span style={{
-                  display: 'inline-block',
-                  color: 'var(--accent)',
-                  fontSize: '13px',
-                  fontFamily: "'Host Grotesk', sans-serif",
-                  fontWeight: 500,
-                  letterSpacing: '0.06em',
-                  textTransform: 'uppercase',
-                  marginBottom: '12px',
-                }}>
+                <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-3">
                   {pillar.step}
                 </span>
-                <h3 style={{
-                  color: 'var(--contrast-1)',
-                  fontSize: '28px',
-                  fontFamily: "'Host Grotesk', sans-serif",
-                  fontWeight: 600,
-                  lineHeight: 1.15,
-                  letterSpacing: '-0.02em',
-                  marginBottom: '16px',
-                }}>
+                <h3 className="text-content text-[28px] font-semibold leading-[1.15] tracking-tight mb-4">
                   {pillar.title}
                 </h3>
-                <p style={{
-                  color: 'var(--contrast-muted)',
-                  fontSize: '15px',
-                  fontFamily: "'Host Grotesk', sans-serif",
-                  lineHeight: 1.6,
-                  letterSpacing: '-0.01em',
-                  marginBottom: '24px',
-                }}>
+                <p className="text-content-muted text-[15px] leading-relaxed tracking-snug mb-6">
                   {pillar.body}
                 </p>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <ul className="list-none flex flex-col gap-2.5">
                   {pillar.bullets.map(b => (
-                    <li key={b} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                      <span style={{ flexShrink: 0, marginTop: '1px' }}><CheckIcon /></span>
-                      <span style={{
-                        color: 'var(--contrast-2)',
-                        fontSize: '14px',
-                        fontFamily: "'Host Grotesk', sans-serif",
-                        lineHeight: 1.5,
-                        letterSpacing: '-0.01em',
-                      }}>
+                    <li key={b} className="flex items-start gap-2.5">
+                      <span className="shrink-0 mt-px"><CheckIcon /></span>
+                      <span className="text-content-secondary text-sm leading-normal tracking-snug">
                         {b}
                       </span>
                     </li>
@@ -158,20 +88,9 @@ export default function SolutionSection() {
                 </ul>
               </div>
 
-              {/* Visual card */}
               <div
-                style={{
-                  order: i % 2 !== 0 ? 0 : 1,
-                  background: 'var(--bg-2)',
-                  border: '1px solid var(--border)',
-                  borderRadius: '16px',
-                  height: '280px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  overflow: 'hidden',
-                  position: 'relative',
-                }}
+                className="bg-surface-alt border border-line rounded-2xl h-[280px] flex items-center justify-center overflow-hidden relative"
+                style={{ order: i % 2 !== 0 ? 0 : 1 }}
               >
                 <PillarVisual index={i} />
               </div>
@@ -185,40 +104,21 @@ export default function SolutionSection() {
 
 function PillarVisual({ index }) {
   if (index === 0) {
-    // Declare → Execute → Audit flow
     return (
-      <div style={{ padding: '24px', width: '100%' }}>
+      <div className="p-6 w-full">
         {[
           { phase: 'DECLARE', color: '#60a5fa', text: 'Breakout Strategy — NVDA 9:35 AM' },
           { phase: 'EXECUTE', color: '#4ade80', text: 'Entry $487.20 → Exit $493.50 (+$630)' },
           { phase: 'AUDIT', color: '#ff8d3b', text: 'Adherence: Yes ✓' },
         ].map((step, i) => (
-          <div key={i} style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            padding: '12px',
-            background: 'var(--bg-1)',
-            borderRadius: '10px',
-            marginBottom: '8px',
-            border: '1px solid var(--border)',
-          }}>
-            <span style={{
-              color: step.color,
-              fontSize: '10px',
-              fontFamily: "'Host Grotesk', sans-serif",
-              fontWeight: 700,
-              letterSpacing: '0.08em',
-              whiteSpace: 'nowrap',
-              minWidth: '58px',
-            }}>
+          <div key={i} className="flex items-center gap-3 p-3 bg-surface rounded-[10px] mb-2 border border-line">
+            <span
+              className="text-[10px] font-bold tracking-widest whitespace-nowrap min-w-[58px]"
+              style={{ color: step.color }}
+            >
               {step.phase}
             </span>
-            <span style={{
-              color: 'var(--contrast-2)',
-              fontSize: '13px',
-              fontFamily: "'Host Grotesk', sans-serif",
-            }}>
+            <span className="text-content-secondary text-[13px]">
               {step.text}
             </span>
           </div>
@@ -228,26 +128,20 @@ function PillarVisual({ index }) {
   }
 
   if (index === 1) {
-    // Mini analytics grid
     return (
-      <div style={{ padding: '20px', width: '100%' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+      <div className="p-5 w-full">
+        <div className="grid grid-cols-2 gap-2.5">
           {[
             { k: 'Expectancy', v: '2.1R', c: '#4ade80' },
             { k: 'Profit Factor', v: '1.74', c: '#60a5fa' },
             { k: 'Best Hour', v: '9:30 AM', c: '#ff8d3b' },
             { k: 'Sharpe Ratio', v: '1.32', c: '#a78bfa' },
           ].map(s => (
-            <div key={s.k} style={{
-              padding: '14px',
-              background: 'var(--bg-1)',
-              borderRadius: '10px',
-              border: '1px solid var(--border)',
-            }}>
-              <div style={{ color: 'var(--contrast-muted)', fontSize: '11px', fontFamily: "'Host Grotesk', sans-serif", marginBottom: '6px', letterSpacing: '0.03em' }}>
+            <div key={s.k} className="p-3.5 bg-surface rounded-[10px] border border-line">
+              <div className="text-content-muted text-[11px] mb-1.5 tracking-wide">
                 {s.k.toUpperCase()}
               </div>
-              <div style={{ color: s.c, fontSize: '22px', fontFamily: "'Host Grotesk', sans-serif", fontWeight: 700, letterSpacing: '-0.03em' }}>
+              <div className="text-[22px] font-bold tracking-tighter" style={{ color: s.c }}>
                 {s.v}
               </div>
             </div>
@@ -257,29 +151,16 @@ function PillarVisual({ index }) {
     )
   }
 
-  // index === 2: broker logos grid
   return (
-    <div style={{ padding: '24px', width: '100%', textAlign: 'center' }}>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px' }}>
+    <div className="p-6 w-full text-center">
+      <div className="grid grid-cols-3 gap-2.5">
         {['Interactive Brokers', 'DAS Trader', 'Lightspeed', 'Binance', 'MetaTrader', 'TradingView', 'NinjaTrader', 'Webull', 'TopStep'].map(name => (
-          <div key={name} style={{
-            padding: '10px 8px',
-            background: 'var(--bg-1)',
-            borderRadius: '8px',
-            border: '1px solid var(--border)',
-            color: 'var(--contrast-2)',
-            fontSize: '10px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 500,
-            letterSpacing: '-0.01em',
-            lineHeight: 1.3,
-            textAlign: 'center',
-          }}>
+          <div key={name} className="py-2.5 px-2 bg-surface rounded-lg border border-line text-content-secondary text-[10px] font-medium tracking-snug leading-[1.3] text-center">
             {name}
           </div>
         ))}
       </div>
-      <p style={{ color: 'var(--contrast-muted)', fontSize: '12px', fontFamily: "'Host Grotesk', sans-serif", marginTop: '12px' }}>
+      <p className="text-content-muted text-xs mt-3">
         + 40 more brokers and platforms
       </p>
     </div>

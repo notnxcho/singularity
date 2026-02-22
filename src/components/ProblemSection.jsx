@@ -18,96 +18,31 @@ const problems = [
 
 export default function ProblemSection() {
   return (
-    <section
-      id="problem"
-      style={{
-        background: 'var(--bg-2)',
-        padding: '120px 12px',
-      }}
-    >
-      <div style={{ maxWidth: '1080px', margin: '0 auto' }}>
-        {/* Section header */}
-        <div style={{ marginBottom: '72px', maxWidth: '680px' }}>
-          <span style={{
-            display: 'inline-block',
-            color: 'var(--accent)',
-            fontSize: '13px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 500,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>
+    <section id="problem" className="bg-surface-alt py-30 px-3">
+      <div className="max-w-container mx-auto">
+        <div className="mb-18 max-w-[680px]">
+          <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             The Problem
           </span>
-          <h2 style={{
-            color: 'var(--contrast-1)',
-            fontSize: 'clamp(32px, 3.5vw, 48px)',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 400,
-            lineHeight: 1.1,
-            letterSpacing: '-0.03em',
-          }}>
+          <h2 className="text-content text-section font-normal">
             You already know what to do.{' '}
-            <span style={{ color: 'var(--contrast-muted)' }}>The problem is you don't do it.</span>
+            <span className="text-content-muted">The problem is you don't do it.</span>
           </h2>
         </div>
 
-        {/* Problem cards */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '20px',
-        }}>
+        <div className="grid grid-cols-3 gap-5">
           {problems.map(p => (
             <div
               key={p.number}
-              style={{
-                background: 'var(--bg-1)',
-                border: '1px solid var(--border)',
-                borderRadius: '16px',
-                padding: '32px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
-                transition: 'border-color 0.2s, box-shadow 0.2s',
-              }}
-              onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'var(--accent-border)'
-                e.currentTarget.style.boxShadow = 'var(--shadow-card-hover)'
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.style.borderColor = 'var(--border)'
-                e.currentTarget.style.boxShadow = 'none'
-              }}
+              className="bg-surface border border-line rounded-2xl p-8 flex flex-col gap-4 transition-[border-color,box-shadow] duration-200 hover:border-accent-border hover:shadow-card-hover"
             >
-              <span style={{
-                color: 'var(--accent)',
-                fontSize: '13px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontWeight: 700,
-                letterSpacing: '0.05em',
-              }}>
+              <span className="text-accent text-[13px] font-bold tracking-wider">
                 {p.number}
               </span>
-              <h3 style={{
-                color: 'var(--contrast-1)',
-                fontSize: '20px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontWeight: 600,
-                lineHeight: 1.2,
-                letterSpacing: '-0.02em',
-              }}>
+              <h3 className="text-content text-xl font-semibold leading-[1.2] tracking-tight">
                 {p.title}
               </h3>
-              <p style={{
-                color: 'var(--contrast-muted)',
-                fontSize: '15px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontWeight: 400,
-                lineHeight: 1.6,
-                letterSpacing: '-0.01em',
-              }}>
+              <p className="text-content-muted text-[15px] leading-relaxed tracking-snug">
                 {p.body}
               </p>
             </div>

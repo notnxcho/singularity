@@ -13,7 +13,7 @@ const tabs = [
       'Conditional rules: "Only valid when VIX > 20"',
       'Strategy performance dashboard with adherence rate',
     ],
-    visual: <StrategyVisual />,
+    visual: 'strategy',
   },
   {
     id: 'analytics',
@@ -27,7 +27,7 @@ const tabs = [
       'YoY / MoM period comparisons',
       'Advanced filter: combine any 5 dimensions',
     ],
-    visual: <AnalyticsVisual />,
+    visual: 'analytics',
   },
   {
     id: 'behavioral',
@@ -41,7 +41,7 @@ const tabs = [
       'Optional emotional tagging: calm, frustrated, euphoric, revenge',
       'Consecutive wins/losses streak tracking',
     ],
-    visual: <BehavioralVisual />,
+    visual: 'behavioral',
   },
   {
     id: 'import',
@@ -55,134 +55,65 @@ const tabs = [
       'Prop firm reports: TopStep, Apex, FTMO',
       'Crypto: Binance, Bybit, Coinbase, KuCoin',
     ],
-    visual: <ImportVisual />,
+    visual: 'import',
   },
 ]
+
+const visualComponents = {
+  strategy: StrategyVisual,
+  analytics: AnalyticsVisual,
+  behavioral: BehavioralVisual,
+  import: ImportVisual,
+}
 
 export default function FeaturesSection() {
   const [active, setActive] = useState('strategy')
   const current = tabs.find(t => t.id === active)
+  const VisualComponent = visualComponents[current.visual]
 
   return (
-    <section
-      id="features"
-      style={{
-        background: 'var(--bg-1)',
-        padding: '120px 12px',
-        borderTop: '1px solid var(--border)',
-        borderBottom: '1px solid var(--border)',
-      }}
-    >
-      <div style={{ maxWidth: '1080px', margin: '0 auto' }}>
-        {/* Header */}
-        <div style={{ marginBottom: '56px' }}>
-          <span style={{
-            display: 'inline-block',
-            color: 'var(--accent)',
-            fontSize: '13px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 500,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>
+    <section id="features" className="bg-surface py-30 px-3 border-t border-b border-line">
+      <div className="max-w-container mx-auto">
+        <div className="mb-14">
+          <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             Features
           </span>
-          <h2 style={{
-            color: 'var(--contrast-1)',
-            fontSize: 'clamp(32px, 3.5vw, 48px)',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 400,
-            lineHeight: 1.1,
-            letterSpacing: '-0.03em',
-          }}>
+          <h2 className="text-content text-section font-normal">
             Everything a serious trader needs.
             <br />
-            <span style={{ color: 'var(--contrast-muted)' }}>Nothing they don't.</span>
+            <span className="text-content-muted">Nothing they don't.</span>
           </h2>
         </div>
 
-        {/* Tab bar */}
-        <div style={{
-          display: 'flex',
-          gap: '4px',
-          marginBottom: '40px',
-          background: 'var(--bg-2)',
-          padding: '4px',
-          borderRadius: '14px',
-          width: 'fit-content',
-        }}>
+        <div className="flex gap-1 mb-10 bg-surface-alt p-1 rounded-[14px] w-fit">
           {tabs.map(tab => (
             <button
               key={tab.id}
               onClick={() => setActive(tab.id)}
-              style={{
-                padding: '10px 18px',
-                borderRadius: '10px',
-                border: 'none',
-                cursor: 'pointer',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontSize: '14px',
-                fontWeight: active === tab.id ? 600 : 400,
-                letterSpacing: '-0.01em',
-                background: active === tab.id ? 'var(--bg-1)' : 'transparent',
-                color: active === tab.id ? 'var(--contrast-1)' : 'var(--contrast-muted)',
-                boxShadow: active === tab.id ? 'var(--shadow-card)' : 'none',
-                transition: 'all 0.15s ease',
-              }}
+              className={`py-2.5 px-[18px] rounded-[10px] border-none cursor-pointer text-sm tracking-snug transition-all duration-150 ${
+                active === tab.id
+                  ? 'font-semibold bg-surface text-content shadow-card'
+                  : 'font-normal bg-transparent text-content-muted'
+              }`}
             >
               {tab.label}
             </button>
           ))}
         </div>
 
-        {/* Tab content */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '60px',
-          alignItems: 'start',
-        }}>
-          {/* Left: description */}
+        <div className="grid grid-cols-2 gap-[60px] items-start">
           <div>
-            <h3 style={{
-              color: 'var(--contrast-1)',
-              fontSize: '28px',
-              fontFamily: "'Host Grotesk', sans-serif",
-              fontWeight: 600,
-              lineHeight: 1.15,
-              letterSpacing: '-0.03em',
-              marginBottom: '14px',
-            }}>
+            <h3 className="text-content text-[28px] font-semibold leading-[1.15] tracking-tighter mb-3.5">
               {current.headline}
             </h3>
-            <p style={{
-              color: 'var(--contrast-muted)',
-              fontSize: '15px',
-              fontFamily: "'Host Grotesk', sans-serif",
-              lineHeight: 1.6,
-              letterSpacing: '-0.01em',
-              marginBottom: '28px',
-            }}>
+            <p className="text-content-muted text-[15px] leading-relaxed tracking-snug mb-7">
               {current.body}
             </p>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <ul className="list-none flex flex-col gap-3">
               {current.details.map(d => (
-                <li key={d} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                  <span style={{
-                    color: 'var(--accent)',
-                    fontSize: '16px',
-                    lineHeight: 1,
-                    marginTop: '1px',
-                    flexShrink: 0,
-                  }}>→</span>
-                  <span style={{
-                    color: 'var(--contrast-2)',
-                    fontSize: '14px',
-                    fontFamily: "'Host Grotesk', sans-serif",
-                    lineHeight: 1.5,
-                    letterSpacing: '-0.01em',
-                  }}>
+                <li key={d} className="flex items-start gap-2.5">
+                  <span className="text-accent text-base leading-none mt-px shrink-0">→</span>
+                  <span className="text-content-secondary text-sm leading-normal tracking-snug">
                     {d}
                   </span>
                 </li>
@@ -190,17 +121,8 @@ export default function FeaturesSection() {
             </ul>
           </div>
 
-          {/* Right: visual */}
-          <div style={{
-            background: 'var(--bg-2)',
-            border: '1px solid var(--border)',
-            borderRadius: '16px',
-            minHeight: '360px',
-            overflow: 'hidden',
-            display: 'flex',
-            alignItems: 'stretch',
-          }}>
-            {current.visual}
+          <div className="bg-surface-alt border border-line rounded-2xl min-h-[360px] overflow-hidden flex items-stretch">
+            <VisualComponent />
           </div>
         </div>
       </div>
@@ -210,19 +132,11 @@ export default function FeaturesSection() {
 
 function StrategyVisual() {
   return (
-    <div style={{ padding: '24px', width: '100%' }}>
-      <div style={{
-        color: 'var(--contrast-muted)',
-        fontSize: '11px',
-        fontFamily: "'Host Grotesk', sans-serif",
-        fontWeight: 600,
-        letterSpacing: '0.06em',
-        textTransform: 'uppercase',
-        marginBottom: '16px',
-      }}>
+    <div className="p-6 w-full">
+      <div className="text-content-muted text-[11px] font-semibold tracking-widest uppercase mb-4">
         Strategy Builder — Breakout v2
       </div>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+      <div className="flex flex-col gap-2">
         {[
           { field: 'Entry Criteria', value: 'First 5-min candle break + volume > 2x avg', color: 'var(--contrast-2)' },
           { field: 'Stop Loss', value: 'Below HOD of prior day', color: 'var(--contrast-2)' },
@@ -231,32 +145,11 @@ function StrategyVisual() {
           { field: 'Valid When', value: 'VIX > 18, Volume > 1M', color: '#ff8d3b' },
           { field: 'Status', value: 'Active', color: '#4ade80' },
         ].map(row => (
-          <div key={row.field} style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            padding: '10px 14px',
-            background: 'var(--bg-1)',
-            borderRadius: '8px',
-            border: '1px solid var(--border)',
-            gap: '12px',
-          }}>
-            <span style={{
-              color: 'var(--contrast-muted)',
-              fontSize: '12px',
-              fontFamily: "'Host Grotesk', sans-serif",
-              letterSpacing: '0.02em',
-              flexShrink: 0,
-            }}>
+          <div key={row.field} className="flex justify-between items-center py-2.5 px-3.5 bg-surface rounded-lg border border-line gap-3">
+            <span className="text-content-muted text-xs tracking-wide shrink-0">
               {row.field}
             </span>
-            <span style={{
-              color: row.color,
-              fontSize: '12px',
-              fontFamily: "'Host Grotesk', sans-serif",
-              fontWeight: 500,
-              textAlign: 'right',
-            }}>
+            <span className="text-xs font-medium text-right" style={{ color: row.color }}>
               {row.value}
             </span>
           </div>
@@ -275,45 +168,27 @@ function AnalyticsVisual() {
     { label: 'Fri', h: 45, pnl: '+$620' },
   ]
   return (
-    <div style={{ padding: '24px', width: '100%', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-      <div style={{
-        color: 'var(--contrast-muted)',
-        fontSize: '11px',
-        fontFamily: "'Host Grotesk', sans-serif",
-        fontWeight: 600,
-        letterSpacing: '0.06em',
-        textTransform: 'uppercase',
-      }}>
+    <div className="p-6 w-full flex flex-col gap-4">
+      <div className="text-content-muted text-[11px] font-semibold tracking-widest uppercase">
         PnL by Day of Week
       </div>
-      <div style={{ display: 'flex', gap: '10px', alignItems: 'flex-end', flex: 1, paddingBottom: '8px' }}>
+      <div className="flex gap-2.5 items-end flex-1 pb-2">
         {bars.map(b => (
-          <div key={b.label} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
-            <span style={{ color: '#4ade80', fontSize: '11px', fontFamily: "'Host Grotesk', sans-serif", fontWeight: 600 }}>
+          <div key={b.label} className="flex-1 flex flex-col items-center gap-1.5">
+            <span className="text-green-400 text-[11px] font-semibold">
               {b.pnl}
             </span>
-            <div style={{
-              width: '100%',
-              height: `${b.h * 1.4}px`,
-              background: 'linear-gradient(180deg, #4ade80 0%, rgba(74, 222, 128, 0.4) 100%)',
-              borderRadius: '6px 6px 0 0',
-            }}/>
-            <span style={{ color: 'var(--contrast-muted)', fontSize: '12px', fontFamily: "'Host Grotesk', sans-serif" }}>
+            <div
+              className="w-full rounded-t-md bg-gradient-to-b from-green-400 to-green-400/40"
+              style={{ height: `${b.h * 1.4}px` }}
+            />
+            <span className="text-content-muted text-xs">
               {b.label}
             </span>
           </div>
         ))}
       </div>
-      <div style={{
-        padding: '12px 14px',
-        background: 'var(--bg-1)',
-        borderRadius: '8px',
-        border: '1px solid var(--border)',
-        color: 'var(--accent)',
-        fontSize: '13px',
-        fontFamily: "'Host Grotesk', sans-serif",
-        fontWeight: 500,
-      }}>
+      <div className="py-3 px-3.5 bg-surface rounded-lg border border-line text-accent text-[13px] font-medium">
         Best performance: Thursday 9:30–10:30 AM
       </div>
     </div>
@@ -322,68 +197,49 @@ function AnalyticsVisual() {
 
 function BehavioralVisual() {
   return (
-    <div style={{ padding: '24px', width: '100%', display: 'flex', flexDirection: 'column', gap: '14px' }}>
-      {/* Discipline Score */}
-      <div style={{
-        padding: '16px',
-        background: 'var(--bg-1)',
-        borderRadius: '12px',
-        border: '1px solid var(--border)',
-      }}>
-        <div style={{ color: 'var(--contrast-muted)', fontSize: '11px', fontFamily: "'Host Grotesk', sans-serif", letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '8px' }}>
+    <div className="p-6 w-full flex flex-col gap-3.5">
+      <div className="p-4 bg-surface rounded-xl border border-line">
+        <div className="text-content-muted text-[11px] tracking-wider uppercase mb-2">
           Discipline Score
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-          <div style={{ color: '#ff8d3b', fontSize: '40px', fontFamily: "'Host Grotesk', sans-serif", fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1 }}>
+        <div className="flex items-center gap-3.5">
+          <div className="text-accent text-[40px] font-extrabold tracking-tightest leading-none">
             74
           </div>
-          <div style={{ flex: 1 }}>
-            <div style={{ height: '6px', background: 'var(--bg-2)', borderRadius: '3px', overflow: 'hidden', marginBottom: '6px' }}>
-              <div style={{ width: '74%', height: '100%', background: 'linear-gradient(90deg, #ff8d3b, #fbbf24)', borderRadius: '3px' }}/>
+          <div className="flex-1">
+            <div className="h-1.5 bg-surface-alt rounded-sm overflow-hidden mb-1.5">
+              <div className="w-[74%] h-full bg-gradient-to-r from-accent to-amber-400 rounded-sm" />
             </div>
-            <div style={{ color: 'var(--contrast-muted)', fontSize: '11px', fontFamily: "'Host Grotesk', sans-serif" }}>
+            <div className="text-content-muted text-[11px]">
               +6 pts from last week
             </div>
           </div>
         </div>
       </div>
 
-      {/* Tilt alert */}
-      <div style={{
-        padding: '14px',
-        background: 'rgba(248, 113, 113, 0.07)',
-        borderRadius: '12px',
-        border: '1px solid rgba(248, 113, 113, 0.2)',
-      }}>
-        <div style={{ color: '#f87171', fontSize: '12px', fontFamily: "'Host Grotesk', sans-serif", fontWeight: 600, letterSpacing: '0.03em', marginBottom: '6px' }}>
+      <div className="p-3.5 bg-red-400/[0.07] rounded-xl border border-red-400/20">
+        <div className="text-red-400 text-xs font-semibold tracking-wide mb-1.5">
           ⚠ TILT ALERT
         </div>
-        <div style={{ color: 'var(--contrast-2)', fontSize: '13px', fontFamily: "'Host Grotesk', sans-serif", lineHeight: 1.4 }}>
-          5 trades in 12 min after a –$420 loss. Historical PnL in this pattern: <span style={{ color: '#f87171', fontWeight: 600 }}>–$2,340</span>
+        <div className="text-content-secondary text-[13px] leading-[1.4]">
+          5 trades in 12 min after a –$420 loss. Historical PnL in this pattern: <span className="text-red-400 font-semibold">–$2,340</span>
         </div>
       </div>
 
-      {/* Overtrading */}
-      <div style={{
-        padding: '14px',
-        background: 'var(--bg-1)',
-        borderRadius: '12px',
-        border: '1px solid var(--border)',
-      }}>
-        <div style={{ color: 'var(--contrast-muted)', fontSize: '11px', fontFamily: "'Host Grotesk', sans-serif", letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: '8px' }}>
+      <div className="p-3.5 bg-surface rounded-xl border border-line">
+        <div className="text-content-muted text-[11px] tracking-wider uppercase mb-2">
           Today's trade count
         </div>
-        <div style={{ display: 'flex', gap: '4px', alignItems: 'flex-end' }}>
+        <div className="flex gap-1 items-end">
           {[12, 15, 18, 22, 19, 31, 28].map((v, i) => (
-            <div key={i} style={{
-              flex: 1,
-              height: `${v * 2.5}px`,
-              background: v === 31 ? '#f87171' : 'var(--bg-3)',
-              borderRadius: '3px 3px 0 0',
-            }}/>
+            <div
+              key={i}
+              className={`flex-1 rounded-t-sm ${v === 31 ? 'bg-red-400' : 'bg-surface-elevated'}`}
+              style={{ height: `${v * 2.5}px` }}
+            />
           ))}
         </div>
-        <div style={{ color: '#f87171', fontSize: '12px', fontFamily: "'Host Grotesk', sans-serif", marginTop: '6px', fontWeight: 500 }}>
+        <div className="text-red-400 text-xs font-medium mt-1.5">
           Today: 31 trades (avg 19) — overtrading flag
         </div>
       </div>
@@ -398,48 +254,18 @@ function ImportVisual() {
     'MetaTrader 5', 'NinjaTrader', 'TradingView', 'Binance',
   ]
   return (
-    <div style={{ padding: '24px', width: '100%' }}>
-      <div style={{
-        color: 'var(--contrast-muted)',
-        fontSize: '11px',
-        fontFamily: "'Host Grotesk', sans-serif",
-        fontWeight: 600,
-        letterSpacing: '0.06em',
-        textTransform: 'uppercase',
-        marginBottom: '16px',
-      }}>
+    <div className="p-6 w-full">
+      <div className="text-content-muted text-[11px] font-semibold tracking-widest uppercase mb-4">
         50+ Connected Platforms
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px' }}>
+      <div className="grid grid-cols-3 gap-2">
         {brokers.map(b => (
-          <div key={b} style={{
-            padding: '10px',
-            background: 'var(--bg-1)',
-            border: '1px solid var(--border)',
-            borderRadius: '8px',
-            color: 'var(--contrast-2)',
-            fontSize: '11px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 500,
-            textAlign: 'center',
-            lineHeight: 1.3,
-          }}>
+          <div key={b} className="p-2.5 bg-surface border border-line rounded-lg text-content-secondary text-[11px] font-medium text-center leading-[1.3]">
             {b}
           </div>
         ))}
       </div>
-      <div style={{
-        marginTop: '12px',
-        padding: '12px',
-        background: 'var(--bg-1)',
-        border: '1px solid var(--accent-border)',
-        borderRadius: '8px',
-        color: 'var(--accent)',
-        fontSize: '13px',
-        fontFamily: "'Host Grotesk', sans-serif",
-        fontWeight: 500,
-        textAlign: 'center',
-      }}>
+      <div className="mt-3 p-3 bg-surface border border-accent-border rounded-lg text-accent text-[13px] font-medium text-center">
         + CSV smart mapping for any broker
       </div>
     </div>

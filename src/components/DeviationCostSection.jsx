@@ -1,100 +1,38 @@
 export default function DeviationCostSection() {
   return (
-    <section
-      id="deviation-cost"
-      style={{
-        background: 'var(--bg-2)',
-        padding: '120px 12px',
-      }}
-    >
-      <div style={{ maxWidth: '1080px', margin: '0 auto' }}>
-        {/* Header */}
-        <div style={{ marginBottom: '72px', textAlign: 'center' }}>
-          <span style={{
-            display: 'inline-block',
-            color: 'var(--accent)',
-            fontSize: '13px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 500,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>
+    <section id="deviation-cost" className="bg-surface-alt py-30 px-3">
+      <div className="max-w-container mx-auto">
+        <div className="mb-18 text-center">
+          <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             The Killer Metric
           </span>
-          <h2 style={{
-            color: 'var(--contrast-1)',
-            fontSize: 'clamp(32px, 3.5vw, 48px)',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 400,
-            lineHeight: 1.1,
-            letterSpacing: '-0.03em',
-            marginBottom: '16px',
-          }}>
+          <h2 className="text-content text-section font-normal mb-4">
             The metric no other journal gives you.
           </h2>
-          <p style={{
-            color: 'var(--contrast-muted)',
-            fontSize: '16px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            lineHeight: 1.6,
-            letterSpacing: '-0.01em',
-            maxWidth: '560px',
-            margin: '0 auto',
-          }}>
+          <p className="text-content-muted text-base leading-relaxed tracking-snug max-w-[560px] mx-auto">
             For every trade where you broke your own rules, Singularity calculates what would have happened if you hadn't. The difference is your Deviation Cost — the most honest number in your portfolio.
           </p>
         </div>
 
-        {/* Main stat card */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '40px',
-          alignItems: 'center',
-        }}>
-          {/* Left: the "aha moment" card */}
-          <div style={{
-            background: 'var(--bg-1)',
-            border: '1px solid var(--border)',
-            borderRadius: '20px',
-            overflow: 'hidden',
-          }}>
-            {/* Card header */}
-            <div style={{
-              padding: '20px 28px',
-              borderBottom: '1px solid var(--border)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-            }}>
-              <span style={{
-                color: 'var(--contrast-1)',
-                fontSize: '14px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontWeight: 600,
-                letterSpacing: '-0.01em',
-              }}>
+        <div className="grid grid-cols-2 gap-10 items-center">
+          <div className="bg-surface border border-line rounded-2.5xl overflow-hidden">
+            <div className="py-5 px-7 border-b border-line flex items-center justify-between">
+              <span className="text-content text-sm font-semibold tracking-snug">
                 Deviation Cost™
               </span>
-              <span style={{
-                color: 'var(--contrast-muted)',
-                fontSize: '12px',
-                fontFamily: "'Host Grotesk', sans-serif",
-              }}>
+              <span className="text-content-muted text-xs">
                 February 2026
               </span>
             </div>
 
-            {/* Stats */}
-            <div style={{ padding: '28px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            <div className="p-7 flex flex-col gap-5">
               <StatRow
                 label="Your PnL this month"
                 value="+$4,280"
                 color="var(--contrast-1)"
                 valueSize="28px"
               />
-              <div style={{ borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
+              <div className="border-t border-line pt-5">
                 <StatRow
                   label="PnL on strategy-adherent trades"
                   value="+$9,140"
@@ -103,7 +41,7 @@ export default function DeviationCostSection() {
                   subtext="68% of your trades"
                 />
               </div>
-              <div style={{ borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
+              <div className="border-t border-line pt-5">
                 <StatRow
                   label="Deviation Cost"
                   value="–$4,860"
@@ -113,86 +51,39 @@ export default function DeviationCostSection() {
                 />
               </div>
 
-              {/* Impact message */}
-              <div style={{
-                background: 'rgba(248, 113, 113, 0.08)',
-                border: '1px solid rgba(248, 113, 113, 0.2)',
-                borderRadius: '10px',
-                padding: '14px 16px',
-              }}>
-                <p style={{
-                  color: '#f87171',
-                  fontSize: '14px',
-                  fontFamily: "'Host Grotesk', sans-serif",
-                  fontWeight: 500,
-                  lineHeight: 1.4,
-                  letterSpacing: '-0.01em',
-                }}>
+              <div className="bg-red-400/[0.08] border border-red-400/20 rounded-[10px] py-3.5 px-4">
+                <p className="text-red-400 text-sm font-medium leading-[1.4] tracking-snug">
                   Your deviations cost you more than you made this month.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Right: explanation */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+          <div className="flex flex-col gap-8">
             <div>
-              <h3 style={{
-                color: 'var(--contrast-1)',
-                fontSize: '32px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontWeight: 600,
-                lineHeight: 1.15,
-                letterSpacing: '-0.03em',
-                marginBottom: '16px',
-              }}>
-                <span style={{ color: 'var(--accent)' }}>Deviation Cost™</span>
+              <h3 className="text-content text-[32px] font-semibold leading-[1.15] tracking-tighter mb-4">
+                <span className="text-accent">Deviation Cost™</span>
                 <br />
                 is the number<br />that changes everything.
               </h3>
-              <p style={{
-                color: 'var(--contrast-muted)',
-                fontSize: '16px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                lineHeight: 1.6,
-                letterSpacing: '-0.01em',
-              }}>
+              <p className="text-content-muted text-base leading-relaxed tracking-snug">
                 You already knew discipline mattered. Now you have the exact dollar amount to prove it to yourself. Every session. Every strategy. No more guessing.
               </p>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div className="flex flex-col gap-4">
               {[
                 { label: 'Per-strategy breakdown', desc: 'See which strategies suffer most from your deviations' },
                 { label: 'Historical trending', desc: 'Is your discipline improving or degrading over time?' },
                 { label: 'Deviation categories', desc: 'Early exit, moved stop, FOMO, revenge — what\'s costing you most?' },
               ].map(item => (
-                <div key={item.label} style={{ display: 'flex', gap: '14px', alignItems: 'flex-start' }}>
-                  <div style={{
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    background: 'var(--accent)',
-                    marginTop: '7px',
-                    flexShrink: 0,
-                  }}/>
+                <div key={item.label} className="flex gap-3.5 items-start">
+                  <div className="w-1.5 h-1.5 rounded-full bg-accent mt-[7px] shrink-0" />
                   <div>
-                    <div style={{
-                      color: 'var(--contrast-1)',
-                      fontSize: '15px',
-                      fontFamily: "'Host Grotesk', sans-serif",
-                      fontWeight: 600,
-                      letterSpacing: '-0.01em',
-                      marginBottom: '2px',
-                    }}>
+                    <div className="text-content text-[15px] font-semibold tracking-snug mb-0.5">
                       {item.label}
                     </div>
-                    <div style={{
-                      color: 'var(--contrast-muted)',
-                      fontSize: '14px',
-                      fontFamily: "'Host Grotesk', sans-serif",
-                      lineHeight: 1.5,
-                    }}>
+                    <div className="text-content-muted text-sm leading-normal">
                       {item.desc}
                     </div>
                   </div>
@@ -208,32 +99,18 @@ export default function DeviationCostSection() {
 
 function StatRow({ label, value, color, valueSize = '24px', subtext, bold }) {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-      <div style={{
-        color: 'var(--contrast-muted)',
-        fontSize: '12px',
-        fontFamily: "'Host Grotesk', sans-serif",
-        letterSpacing: '0.04em',
-        textTransform: 'uppercase',
-      }}>
+    <div className="flex flex-col gap-1">
+      <div className="text-content-muted text-xs tracking-wider uppercase">
         {label}
       </div>
-      <div style={{
-        color,
-        fontSize: valueSize,
-        fontFamily: "'Host Grotesk', sans-serif",
-        fontWeight: bold ? 700 : 600,
-        letterSpacing: '-0.04em',
-        lineHeight: 1,
-      }}>
+      <div
+        className={`${bold ? 'font-bold' : 'font-semibold'} tracking-tightest leading-none`}
+        style={{ color, fontSize: valueSize }}
+      >
         {value}
       </div>
       {subtext && (
-        <div style={{
-          color: 'var(--contrast-muted)',
-          fontSize: '12px',
-          fontFamily: "'Host Grotesk', sans-serif",
-        }}>
+        <div className="text-content-muted text-xs">
           {subtext}
         </div>
       )}

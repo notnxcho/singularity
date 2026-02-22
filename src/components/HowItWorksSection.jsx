@@ -24,132 +24,55 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section
-      id="how-it-works"
-      style={{
-        background: 'var(--bg-2)',
-        padding: '120px 12px',
-      }}
-    >
-      <div style={{ maxWidth: '1080px', margin: '0 auto' }}>
-        <div style={{ marginBottom: '72px', textAlign: 'center' }}>
-          <span style={{
-            display: 'inline-block',
-            color: 'var(--accent)',
-            fontSize: '13px',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 500,
-            letterSpacing: '0.08em',
-            textTransform: 'uppercase',
-            marginBottom: '16px',
-          }}>
+    <section id="how-it-works" className="bg-surface-alt py-30 px-3">
+      <div className="max-w-container mx-auto">
+        <div className="mb-18 text-center">
+          <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             How It Works
           </span>
-          <h2 style={{
-            color: 'var(--contrast-1)',
-            fontSize: 'clamp(32px, 3.5vw, 48px)',
-            fontFamily: "'Host Grotesk', sans-serif",
-            fontWeight: 400,
-            lineHeight: 1.1,
-            letterSpacing: '-0.03em',
-          }}>
+          <h2 className="text-content text-section font-normal">
             Three steps. That's it.
           </h2>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '2px',
-          background: 'var(--border)',
-          borderRadius: '20px',
-          overflow: 'hidden',
-        }}>
+        <div className="grid grid-cols-3 gap-0.5 bg-line rounded-2.5xl overflow-hidden">
           {steps.map((step, i) => (
             <div
               key={i}
-              style={{
-                background: 'var(--bg-1)',
-                padding: '48px 36px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
-              }}
+              className="bg-surface py-12 px-9 flex flex-col gap-4"
             >
-              {/* Step number */}
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-              }}>
-                <span style={{
-                  width: '36px',
-                  height: '36px',
-                  borderRadius: '50%',
-                  border: `1.5px solid ${step.color}`,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: step.color,
-                  fontSize: '13px',
-                  fontFamily: "'Host Grotesk', sans-serif",
-                  fontWeight: 700,
-                  letterSpacing: '0.03em',
-                  flexShrink: 0,
-                }}>
+              <div className="flex items-center gap-3">
+                <span
+                  className="w-9 h-9 rounded-full flex items-center justify-center text-[13px] font-bold tracking-wide shrink-0"
+                  style={{ border: `1.5px solid ${step.color}`, color: step.color }}
+                >
                   {step.number}
                 </span>
-                <div style={{
-                  flex: 1,
-                  height: '1px',
-                  background: i < 2 ? 'var(--border)' : 'transparent',
-                }}/>
+                <div
+                  className="flex-1 h-px"
+                  style={{ background: i < 2 ? 'var(--border)' : 'transparent' }}
+                />
               </div>
 
-              <h3 style={{
-                color: step.color,
-                fontSize: '32px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontWeight: 700,
-                letterSpacing: '-0.04em',
-                lineHeight: 1,
-              }}>
+              <h3
+                className="text-[32px] font-bold tracking-tightest leading-none"
+                style={{ color: step.color }}
+              >
                 {step.title}
               </h3>
 
-              <p style={{
-                color: 'var(--contrast-1)',
-                fontSize: '17px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                fontWeight: 500,
-                lineHeight: 1.3,
-                letterSpacing: '-0.02em',
-              }}>
+              <p className="text-content text-[17px] font-medium leading-[1.3] tracking-tight">
                 {step.subtitle}
               </p>
 
-              <p style={{
-                color: 'var(--contrast-muted)',
-                fontSize: '14px',
-                fontFamily: "'Host Grotesk', sans-serif",
-                lineHeight: 1.6,
-                letterSpacing: '-0.01em',
-              }}>
+              <p className="text-content-muted text-sm leading-relaxed tracking-snug">
                 {step.body}
               </p>
             </div>
           ))}
         </div>
 
-        {/* Bottom note */}
-        <p style={{
-          textAlign: 'center',
-          marginTop: '32px',
-          color: 'var(--contrast-muted)',
-          fontSize: '14px',
-          fontFamily: "'Host Grotesk', sans-serif",
-          letterSpacing: '-0.01em',
-        }}>
+        <p className="text-center mt-8 text-content-muted text-sm tracking-snug">
           No credit card required. Import your first trades in under 2 minutes.
         </p>
       </div>
