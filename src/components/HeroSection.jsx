@@ -1,5 +1,4 @@
-// Figma v1 hero — background image asset from Figma MCP local server
-const heroImage = 'http://localhost:3845/assets/c368012cc60e1f5830789384332544131108aaa2.png'
+import heroImage from '../assets/hero-background.png'
 
 const ArrowDownRight = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
