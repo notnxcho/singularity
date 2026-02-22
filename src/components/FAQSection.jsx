@@ -35,9 +35,9 @@ export default function FAQSection() {
   const [open, setOpen] = useState(null)
 
   return (
-    <section id="faq" className="bg-surface-alt py-30 px-3 border-t border-line">
+    <section id="faq" className="bg-surface-alt py-16 md:py-30 px-3 border-t border-line">
       <div className="max-w-[760px] mx-auto">
-        <div className="mb-16 text-center">
+        <div className="mb-12 md:mb-16 text-center">
           <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             FAQ
           </span>
@@ -54,9 +54,9 @@ export default function FAQSection() {
             >
               <button
                 onClick={() => setOpen(open === i ? null : i)}
-                className="w-full py-[22px] px-6 flex items-center justify-between gap-4 bg-transparent border-none cursor-pointer text-left"
+                className="w-full py-5 md:py-[22px] px-5 md:px-6 flex items-center justify-between gap-4 bg-transparent border-none cursor-pointer text-left"
               >
-                <span className="text-content text-base font-medium leading-[1.35] tracking-tight">
+                <span className="text-content text-[15px] md:text-base font-medium leading-[1.35] tracking-tight">
                   {faq.q}
                 </span>
                 <span
@@ -68,13 +68,24 @@ export default function FAQSection() {
                 </span>
               </button>
 
-              {open === i && (
-                <div className="px-6 pb-[22px] border-t border-line pt-5">
-                  <p className="text-content-muted text-[15px] leading-[1.65] tracking-snug">
-                    {faq.a}
-                  </p>
+              {/* grid-template-rows trick: animates height:auto cleanly */}
+              <div
+                className={`grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                  open === i ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div
+                    className={`px-5 md:px-6 pb-5 md:pb-[22px] border-t border-line pt-4 md:pt-5
+                      transition-opacity duration-200 ease-out
+                      ${open === i ? 'opacity-100' : 'opacity-0'}`}
+                  >
+                    <p className="text-content-muted text-[14px] md:text-[15px] leading-[1.65] tracking-snug">
+                      {faq.a}
+                    </p>
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           ))}
         </div>

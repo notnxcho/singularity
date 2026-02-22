@@ -24,9 +24,9 @@ const steps = [
 
 export default function HowItWorksSection() {
   return (
-    <section id="how-it-works" className="bg-surface-alt py-30 px-3">
+    <section id="how-it-works" className="bg-surface-alt py-16 md:py-30 px-3">
       <div className="max-w-container mx-auto">
-        <div className="mb-18 text-center">
+        <div className="mb-10 md:mb-18 text-center">
           <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             How It Works
           </span>
@@ -35,11 +35,11 @@ export default function HowItWorksSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 gap-0.5 bg-line rounded-2.5xl overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5 bg-line rounded-2.5xl overflow-hidden">
           {steps.map((step, i) => (
             <div
               key={i}
-              className="bg-surface py-12 px-9 flex flex-col gap-4"
+              className="bg-surface py-8 px-6 md:py-12 md:px-9 flex flex-col gap-4"
             >
               <div className="flex items-center gap-3">
                 <span
@@ -48,20 +48,21 @@ export default function HowItWorksSection() {
                 >
                   {step.number}
                 </span>
+                {/* Connector line — only visible on desktop, only on first two steps */}
                 <div
-                  className="flex-1 h-px"
+                  className="hidden md:block flex-1 h-px"
                   style={{ background: i < 2 ? 'var(--border)' : 'transparent' }}
                 />
               </div>
 
               <h3
-                className="text-[32px] font-bold tracking-tightest leading-none"
+                className="text-[28px] md:text-[32px] font-bold tracking-tightest leading-none"
                 style={{ color: step.color }}
               >
                 {step.title}
               </h3>
 
-              <p className="text-content text-[17px] font-medium leading-[1.3] tracking-tight">
+              <p className="text-content text-[16px] md:text-[17px] font-medium leading-[1.3] tracking-tight">
                 {step.subtitle}
               </p>
 

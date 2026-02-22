@@ -45,9 +45,9 @@ const pillars = [
 
 export default function SolutionSection() {
   return (
-    <section id="platform" className="bg-surface py-30 px-3 border-t border-b border-line">
+    <section id="platform" className="bg-surface py-16 md:py-30 px-3 border-t border-b border-line">
       <div className="max-w-container mx-auto">
-        <div className="mb-18 max-w-[600px]">
+        <div className="mb-10 md:mb-18 max-w-[600px]">
           <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             The Solution
           </span>
@@ -64,13 +64,14 @@ export default function SolutionSection() {
           {pillars.map((pillar, i) => (
             <div
               key={i}
-              className="grid grid-cols-2 gap-20 py-14 border-t border-line items-start"
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 py-8 md:py-14 border-t border-line items-start"
             >
-              <div style={{ order: i % 2 !== 0 ? 1 : 0 }}>
+              {/* Content — always first in DOM, reordered on desktop */}
+              <div className={i % 2 !== 0 ? 'md:order-1' : ''}>
                 <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-3">
                   {pillar.step}
                 </span>
-                <h3 className="text-content text-[28px] font-semibold leading-[1.15] tracking-tight mb-4">
+                <h3 className="text-content text-[22px] md:text-[28px] font-semibold leading-[1.15] tracking-tight mb-4">
                   {pillar.title}
                 </h3>
                 <p className="text-content-muted text-[15px] leading-relaxed tracking-snug mb-6">
@@ -88,9 +89,9 @@ export default function SolutionSection() {
                 </ul>
               </div>
 
+              {/* Visual — below content on mobile, alternates on desktop */}
               <div
-                className="bg-surface-alt border border-line rounded-2xl h-[280px] flex items-center justify-center overflow-hidden relative"
-                style={{ order: i % 2 !== 0 ? 0 : 1 }}
+                className={`bg-surface-alt border border-line rounded-2xl h-[240px] md:h-[280px] flex items-center justify-center overflow-hidden relative`}
               >
                 <PillarVisual index={i} />
               </div>
@@ -105,7 +106,7 @@ export default function SolutionSection() {
 function PillarVisual({ index }) {
   if (index === 0) {
     return (
-      <div className="p-6 w-full">
+      <div className="p-4 md:p-6 w-full">
         {[
           { phase: 'DECLARE', color: '#60a5fa', text: 'Breakout Strategy — NVDA 9:35 AM' },
           { phase: 'EXECUTE', color: '#4ade80', text: 'Entry $487.20 → Exit $493.50 (+$630)' },
@@ -129,7 +130,7 @@ function PillarVisual({ index }) {
 
   if (index === 1) {
     return (
-      <div className="p-5 w-full">
+      <div className="p-4 md:p-5 w-full">
         <div className="grid grid-cols-2 gap-2.5">
           {[
             { k: 'Expectancy', v: '2.1R', c: '#4ade80' },
@@ -152,7 +153,7 @@ function PillarVisual({ index }) {
   }
 
   return (
-    <div className="p-6 w-full text-center">
+    <div className="p-4 md:p-6 w-full text-center">
       <div className="grid grid-cols-3 gap-2.5">
         {['Interactive Brokers', 'DAS Trader', 'Lightspeed', 'Binance', 'MetaTrader', 'TradingView', 'NinjaTrader', 'Webull', 'TopStep'].map(name => (
           <div key={name} className="py-2.5 px-2 bg-surface rounded-lg border border-line text-content-secondary text-[10px] font-medium tracking-snug leading-[1.3] text-center">

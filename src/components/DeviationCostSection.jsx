@@ -1,8 +1,8 @@
 export default function DeviationCostSection() {
   return (
-    <section id="deviation-cost" className="bg-surface-alt py-30 px-3">
+    <section id="deviation-cost" className="bg-surface-alt py-16 md:py-30 px-3">
       <div className="max-w-container mx-auto">
-        <div className="mb-18 text-center">
+        <div className="mb-10 md:mb-18 text-center">
           <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             The Killer Metric
           </span>
@@ -14,9 +14,9 @@ export default function DeviationCostSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-center">
           <div className="bg-surface border border-line rounded-2.5xl overflow-hidden">
-            <div className="py-5 px-7 border-b border-line flex items-center justify-between">
+            <div className="py-5 px-6 md:px-7 border-b border-line flex items-center justify-between">
               <span className="text-content text-sm font-semibold tracking-snug">
                 Deviation Cost™
               </span>
@@ -25,7 +25,7 @@ export default function DeviationCostSection() {
               </span>
             </div>
 
-            <div className="p-7 flex flex-col gap-5">
+            <div className="p-6 md:p-7 flex flex-col gap-5">
               <StatRow
                 label="Your PnL this month"
                 value="+$4,280"
@@ -59,9 +59,9 @@ export default function DeviationCostSection() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-7 md:gap-8">
             <div>
-              <h3 className="text-content text-[32px] font-semibold leading-[1.15] tracking-tighter mb-4">
+              <h3 className="text-content text-[26px] md:text-[32px] font-semibold leading-[1.15] tracking-tighter mb-4">
                 <span className="text-accent">Deviation Cost™</span>
                 <br />
                 is the number<br />that changes everything.

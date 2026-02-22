@@ -18,9 +18,9 @@ const problems = [
 
 export default function ProblemSection() {
   return (
-    <section id="problem" className="bg-surface-alt py-30 px-3">
+    <section id="problem" className="bg-surface-alt py-16 md:py-30 px-3">
       <div className="max-w-container mx-auto">
-        <div className="mb-18 max-w-[680px]">
+        <div className="mb-10 md:mb-18 max-w-[680px]">
           <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             The Problem
           </span>
@@ -30,11 +30,11 @@ export default function ProblemSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
           {problems.map(p => (
             <div
               key={p.number}
-              className="bg-surface border border-line rounded-2xl p-8 flex flex-col gap-4 transition-[border-color,box-shadow] duration-200 hover:border-accent-border hover:shadow-card-hover"
+              className="bg-surface border border-line rounded-2xl p-6 md:p-8 flex flex-col gap-4 transition-[border-color,box-shadow] duration-200 hover:border-accent-border hover:shadow-card-hover"
             >
               <span className="text-accent text-[13px] font-bold tracking-wider">
                 {p.number}

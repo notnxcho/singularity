@@ -43,39 +43,39 @@ const EquityCurve = () => (
 )
 
 const DashboardPreview = () => (
-  <div className="relative w-full h-full flex flex-col gap-3 p-6">
-    <div className="flex items-center justify-between mb-1">
-      <span className="text-[rgba(255,252,245,0.5)] text-xs tracking-[-0.2px]">
+  <div className="relative w-full h-full flex flex-col gap-2.5 md:gap-3 p-3 md:p-6">
+    <div className="flex items-center justify-between mb-0.5 md:mb-1">
+      <span className="text-[rgba(255,252,245,0.5)] text-[10px] md:text-xs tracking-[-0.2px]">
         PERFORMANCE DASHBOARD
       </span>
-      <span className="text-[rgba(255,252,245,0.3)] text-[11px]">
+      <span className="text-[rgba(255,252,245,0.3)] text-[9px] md:text-[11px]">
         Feb 2026
       </span>
     </div>
 
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
       {[
         { label: 'Total PnL', value: '+$9,140', color: '#4ade80' },
         { label: 'Adherence Rate', value: '68%', color: '#ff8d3b' },
         { label: 'Deviation Cost', value: '–$4,860', color: '#f87171' },
         { label: 'Discipline Score', value: '74', color: '#60a5fa' },
       ].map(stat => (
-        <div key={stat.label} className="bg-[rgba(255,252,245,0.04)] border border-[rgba(255,252,245,0.07)] rounded-[10px] p-3">
-          <div className="text-[rgba(255,252,245,0.45)] text-[10px] mb-1.5 tracking-[0.2px]">
+        <div key={stat.label} className="bg-[rgba(255,252,245,0.04)] border border-[rgba(255,252,245,0.07)] rounded-[10px] p-2.5 md:p-3">
+          <div className="text-[rgba(255,252,245,0.45)] text-[9px] md:text-[10px] mb-1 md:mb-1.5 tracking-[0.2px]">
             {stat.label.toUpperCase()}
           </div>
-          <div className="text-lg font-bold tracking-[-0.5px]" style={{ color: stat.color }}>
+          <div className="text-base md:text-lg font-bold tracking-[-0.5px]" style={{ color: stat.color }}>
             {stat.value}
           </div>
         </div>
       ))}
     </div>
 
-    <div className="flex-1 bg-[rgba(255,252,245,0.02)] border border-[rgba(255,252,245,0.07)] rounded-[10px] overflow-hidden min-h-[200px]">
+    <div className="flex-1 bg-[rgba(255,252,245,0.02)] border border-[rgba(255,252,245,0.07)] rounded-[10px] overflow-hidden min-h-[140px] md:min-h-[200px]">
       <EquityCurve />
     </div>
 
-    <div className="bg-[rgba(255,252,245,0.02)] border border-[rgba(255,252,245,0.07)] rounded-[10px] p-3">
+    <div className="hidden md:block bg-[rgba(255,252,245,0.02)] border border-[rgba(255,252,245,0.07)] rounded-[10px] p-3">
       <div className="grid grid-cols-5 gap-2 text-[rgba(255,252,245,0.35)] text-[10px] mb-2 tracking-[0.3px]">
         <span>STRATEGY</span><span>WIN RATE</span><span>AVG R</span><span>ADHERENCE</span><span>DEV COST</span>
       </div>
@@ -105,11 +105,11 @@ export default function HeroSection() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 via-50% to-[rgba(10,9,7,0.85)] to-80%" />
 
-      <div className="relative z-[1] flex flex-col items-center pt-[220px] pb-16 px-3 gap-18">
-        <div className="flex flex-col items-center gap-6 max-w-container w-full">
+      <div className="relative z-[1] flex flex-col items-center pt-[120px] md:pt-[220px] pb-12 md:pb-16 px-3 gap-10 md:gap-18">
+        <div className="flex flex-col items-center gap-5 md:gap-6 max-w-container w-full">
           <div className="flex items-center gap-1.5 py-2 px-3 rounded-xl border border-accent-border backdrop-blur-[2px] bg-[linear-gradient(90deg,rgba(0,0,0,0.2),rgba(0,0,0,0.2)),linear-gradient(rgba(226,255,248,0.12),rgba(255,141,59,0.24))] shadow-nav">
             <SparkIcon />
-            <span className="text-accent text-base tracking-[-0.32px]">
+            <span className="text-accent text-sm md:text-base tracking-[-0.32px]">
               BY QUANTUM EDGE
             </span>
           </div>
@@ -121,7 +121,7 @@ export default function HeroSection() {
             </em>
           </h1>
 
-          <p className="text-[#fffcf5] opacity-80 text-base text-center tracking-[-0.32px] max-w-[460px] [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
+          <p className="text-[#fffcf5] opacity-80 text-sm md:text-base text-center tracking-[-0.32px] max-w-[460px] [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]">
             The trading journal built for high-frequency technical traders who want to know which strategies actually work — and what happens when they don't follow them.
           </p>
 
@@ -137,7 +137,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="w-full max-w-container h-[560px] rounded-2.5xl overflow-hidden border border-[rgba(255,252,245,0.1)] bg-[rgba(10,9,7,0.7)] backdrop-blur-[20px] shadow-[0_32px_120px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,252,245,0.06)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)]">
+        <div className="w-full max-w-container h-[300px] sm:h-[400px] md:h-[560px] rounded-2.5xl overflow-hidden border border-[rgba(255,252,245,0.1)] bg-[rgba(10,9,7,0.7)] backdrop-blur-[20px] shadow-[0_32px_120px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,252,245,0.06)] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)] [-webkit-mask-image:linear-gradient(to_bottom,rgba(0,0,0,1)_50%,rgba(0,0,0,0)_100%)]">
           <DashboardPreview />
         </div>
       </div>

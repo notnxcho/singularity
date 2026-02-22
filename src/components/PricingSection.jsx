@@ -68,9 +68,9 @@ const CheckIcon = () => (
 
 export default function PricingSection() {
   return (
-    <section id="pricing" className="bg-surface py-30 px-3 border-t border-line">
+    <section id="pricing" className="bg-surface py-16 md:py-30 px-3 border-t border-line">
       <div className="max-w-container mx-auto">
-        <div className="mb-16 text-center">
+        <div className="mb-12 md:mb-16 text-center">
           <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             Pricing
           </span>
@@ -82,13 +82,13 @@ export default function PricingSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch">
           {plans.map(plan => (
             <div
               key={plan.name}
-              className={`rounded-2.5xl py-9 px-7 flex flex-col relative overflow-hidden ${
+              className={`rounded-2.5xl py-8 md:py-9 px-6 md:px-7 flex flex-col relative overflow-hidden ${
                 plan.highlight
-                  ? 'bg-[#110000]'
+                  ? 'bg-[#110000] order-first md:order-none'
                   : 'bg-surface-alt border border-line'
               }`}
             >

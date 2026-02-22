@@ -72,9 +72,9 @@ export default function FeaturesSection() {
   const VisualComponent = visualComponents[current.visual]
 
   return (
-    <section id="features" className="bg-surface py-30 px-3 border-t border-b border-line">
+    <section id="features" className="bg-surface py-16 md:py-30 px-3 border-t border-b border-line">
       <div className="max-w-container mx-auto">
-        <div className="mb-14">
+        <div className="mb-10 md:mb-14">
           <span className="inline-block text-accent text-[13px] font-medium tracking-widest uppercase mb-4">
             Features
           </span>
@@ -85,25 +85,28 @@ export default function FeaturesSection() {
           </h2>
         </div>
 
-        <div className="flex gap-1 mb-10 bg-surface-alt p-1 rounded-[14px] w-fit">
-          {tabs.map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActive(tab.id)}
-              className={`py-2.5 px-[18px] rounded-[10px] border-none cursor-pointer text-sm tracking-snug transition-all duration-150 ${
-                active === tab.id
-                  ? 'font-semibold bg-surface text-content shadow-card'
-                  : 'font-normal bg-transparent text-content-muted'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Tab bar — 2×2 grid on mobile, horizontal on desktop */}
+        <div className="mb-8 md:mb-10 bg-surface-alt p-1 rounded-[14px]">
+          <div className="grid grid-cols-2 md:flex gap-1">
+            {tabs.map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActive(tab.id)}
+                className={`py-2.5 px-3 md:px-[18px] rounded-[10px] border-none cursor-pointer text-sm tracking-snug transition-all duration-150 text-center ${
+                  active === tab.id
+                    ? 'font-semibold bg-surface text-content shadow-card'
+                    : 'font-normal bg-transparent text-content-muted'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-[60px] items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-[60px] items-start">
           <div>
-            <h3 className="text-content text-[28px] font-semibold leading-[1.15] tracking-tighter mb-3.5">
+            <h3 className="text-content text-[22px] md:text-[28px] font-semibold leading-[1.15] tracking-tighter mb-3.5">
               {current.headline}
             </h3>
             <p className="text-content-muted text-[15px] leading-relaxed tracking-snug mb-7">
@@ -121,7 +124,7 @@ export default function FeaturesSection() {
             </ul>
           </div>
 
-          <div className="bg-surface-alt border border-line rounded-2xl min-h-[360px] overflow-hidden flex items-stretch">
+          <div className="bg-surface-alt border border-line rounded-2xl min-h-[300px] md:min-h-[360px] overflow-hidden flex items-stretch">
             <VisualComponent />
           </div>
         </div>
@@ -132,7 +135,7 @@ export default function FeaturesSection() {
 
 function StrategyVisual() {
   return (
-    <div className="p-6 w-full">
+    <div className="p-4 md:p-6 w-full">
       <div className="text-content-muted text-[11px] font-semibold tracking-widest uppercase mb-4">
         Strategy Builder — Breakout v2
       </div>
@@ -168,7 +171,7 @@ function AnalyticsVisual() {
     { label: 'Fri', h: 45, pnl: '+$620' },
   ]
   return (
-    <div className="p-6 w-full flex flex-col gap-4">
+    <div className="p-4 md:p-6 w-full flex flex-col gap-4">
       <div className="text-content-muted text-[11px] font-semibold tracking-widest uppercase">
         PnL by Day of Week
       </div>
@@ -197,7 +200,7 @@ function AnalyticsVisual() {
 
 function BehavioralVisual() {
   return (
-    <div className="p-6 w-full flex flex-col gap-3.5">
+    <div className="p-4 md:p-6 w-full flex flex-col gap-3.5">
       <div className="p-4 bg-surface rounded-xl border border-line">
         <div className="text-content-muted text-[11px] tracking-wider uppercase mb-2">
           Discipline Score
@@ -254,7 +257,7 @@ function ImportVisual() {
     'MetaTrader 5', 'NinjaTrader', 'TradingView', 'Binance',
   ]
   return (
-    <div className="p-6 w-full">
+    <div className="p-4 md:p-6 w-full">
       <div className="text-content-muted text-[11px] font-semibold tracking-widest uppercase mb-4">
         50+ Connected Platforms
       </div>
